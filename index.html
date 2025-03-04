@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurDice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="app" class="container mx-auto p-6">
+        <header class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">FurDice</h1>
+            <nav>
+                <a href="index.html" class="px-4 hover:text-yellow-400">Home</a>
+                <a href="about.html" class="px-4 hover:text-yellow-400">About</a>
+                <a href="games.html" class="px-4 hover:text-yellow-400">Games</a>
+                <a href="contact.html" class="px-4 hover:text-yellow-400">Contact</a>
+            </nav>
+        </header>
+        
+        <section class="text-center my-10">
+            <h2 class="text-4xl font-bold mb-4">Welcome to FurDice!</h2>
+            <p class="text-lg">Creating fun and engaging experiences for players worldwide.</p>
+        </section>
+        
+        <section id="games" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Our Games</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div v-for="game in games" :key="game.id" class="p-4 bg-gray-800 rounded-lg">
+                    <h3 class="text-xl font-semibold">{{ game.name }}</h3>
+                    <p class="text-sm">{{ game.description }}</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">About Us</h2>
+            <p>We are passionate developers making fun and creative games!</p>
+        </section>
+        
+        <section id="contact" class="my-10">
+            <h2 class="text-2xl font-bold mb-4">Contact</h2>
+            <p>Email: contact@furdice.com</p>
+        </section>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    games: [
+                        { id: 1, name: "Merge Cats", description: "A fun and addictive cat merging game!" },
+                        { id: 2, name: "Jump Rope Challenge", description: "Jump and test your reflexes!" }
+                    ]
+                };
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>
