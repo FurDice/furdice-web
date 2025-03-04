@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurDice - Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .language-selector {
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        .language-btn {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            margin-left: 0.25rem;
+            cursor: pointer;
+        }
+        .language-btn.active {
+            background-color: #EAB308;
+            color: #111827;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="app" class="container mx-auto p-6">
+        <header class="flex justify-between items-center py-4">
+            <h1 class="text-3xl font-bold">FurDice</h1>
+            <div class="flex items-center">
+                <nav>
+                    <a href="index.html" class="px-4 hover:text-yellow-400">{{ translations[currentLanguage].nav.home }}</a>
+                    <a href="games.html" class="px-4 hover:text-yellow-400">{{ translations[currentLanguage].nav.games }}</a>
+                    <a href="privacy.html" class="px-4 hover:text-yellow-400 text-yellow-400">{{ translations[currentLanguage].nav.privacy }}</a>
+                </nav>
+                <div class="language-selector">
+                    <button 
+                        v-for="(lang, code) in availableLanguages" 
+                        :key="code" 
+                        @click="changeLanguage(code)"
+                        class="language-btn"
+                        :class="{ 'active': currentLanguage === code }">
+                        {{ lang }}
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <section class="my-10 max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 text-center">{{ translations[currentLanguage].privacy.title }}</h2>
+            
+            <div class="bg-gray-800 p-8 rounded-lg">
+                <div class="space-y-6">
+                    <div v-for="(section, index) in translations[currentLanguage].privacy.sections" :key="index">
+                        <h3 class="text-2xl font-semibold mb-3">{{ section.heading }}</h3>
+                        <p class="text-gray-300 mb-4">{{ section.content }}</p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <p class="text-gray-400">{{ translations[currentLanguage].privacy.lastUpdated }}: {{ translations[currentLanguage].privacy.date }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    currentLanguage: 'en',
+                    availableLanguages: {
+                        'en': 'English',
+                        'ko': '한국어',
+                        'ja': '日本語'
+                    },
+                    translations: {
+                        'en': {
+                            nav: {
+                                home: 'Home',
+                                games: 'Games',
+                                privacy: 'Privacy Policy'
+                            },
+                            privacy: {
+                                title: 'Privacy Policy',
+                                lastUpdated: 'Last Updated',
+                                date: 'June 15, 2023',
+                                sections: [
+                                    {
+                                        heading: 'Information We Collect',
+                                        content: 'We collect information that you provide directly to us, such as when you create or modify your account, request customer support, or otherwise communicate with us. This information may include your name, email address, and other contact or identifying information you choose to provide.'
+                                    },
+                                    {
+                                        heading: 'How We Use Information',
+                                        content: 'We use the information we collect to provide, maintain, and improve our services, such as to administer your account, deliver the products and services you request, and customize your experience with us.'
+                                    },
+                                    {
+                                        heading: 'Sharing of Information',
+                                        content: 'We do not share your personal information with third parties except as described in this privacy policy or when we have your permission.'
+                                    },
+                                    {
+                                        heading: 'Data Security',
+                                        content: 'We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction.'
+                                    },
+                                    {
+                                        heading: 'Contact Us',
+                                        content: 'If you have any questions about this Privacy Policy, please contact us at privacy@furdice.com.'
+                                    }
+                                ]
+                            }
+                        },
+                        'ko': {
+                            nav: {
+                                home: '홈',
+                                games: '게임',
+                                privacy: '개인정보 처리방침'
+                            },
+                            privacy: {
+                                title: '개인정보 처리방침',
+                                lastUpdated: '최종 업데이트',
+                                date: '2023년 6월 15일',
+                                sections: [
+                                    {
+                                        heading: '수집하는 정보',
+                                        content: '당사는 귀하가 계정을 생성하거나 수정할 때, 고객 지원을 요청할 때 또는 당사와 통신할 때 직접 제공하는 정보를 수집합니다. 이 정보에는 귀하의 이름, 이메일 주소 및 귀하가 제공하기로 선택한 기타 연락처 또는 식별 정보가 포함될 수 있습니다.'
+                                    },
+                                    {
+                                        heading: '정보 사용 방법',
+                                        content: '당사는 수집한 정보를 사용하여 서비스를 제공, 유지 및 개선합니다. 예를 들어 계정 관리, 요청한 제품 및 서비스 제공, 당사와의 경험 맞춤화 등에 사용합니다.'
+                                    },
+                                    {
+                                        heading: '정보 공유',
+                                        content: '당사는 이 개인정보 처리방침에 설명된 경우나 귀하의 허가가 있는 경우를 제외하고 귀하의 개인 정보를 제3자와 공유하지 않습니다.'
+                                    },
+                                    {
+                                        heading: '데이터 보안',
+                                        content: '당사는 귀하의 개인 정보를 손실, 도난, 오용, 무단 접근, 공개, 변경 및 파괴로부터 보호하기 위해 합리적인 조치를 취합니다.'
+                                    },
+                                    {
+                                        heading: '문의하기',
+                                        content: '이 개인정보 처리방침에 대해 질문이 있으시면 privacy@furdice.com으로 문의해 주세요.'
+                                    }
+                                ]
+                            }
+                        },
+                        'ja': {
+                            nav: {
+                                home: 'ホーム',
+                                games: 'ゲーム',
+                                privacy: 'プライバシーポリシー'
+                            },
+                            privacy: {
+                                title: 'プライバシーポリシー',
+                                lastUpdated: '最終更新日',
+                                date: '2023年6月15日',
+                                sections: [
+                                    {
+                                        heading: '収集する情報',
+                                        content: '当社は、アカウントの作成や変更、カスタマーサポートのリクエスト、またはその他の方法で当社とコミュニケーションを取る際に、お客様が直接提供する情報を収集します。この情報には、お名前、メールアドレス、およびお客様が提供することを選択したその他の連絡先や識別情報が含まれる場合があります。'
+                                    },
+                                    {
+                                        heading: '情報の使用方法',
+                                        content: '当社は、収集した情報を使用して、サービスの提供、維持、改善を行います。例えば、アカウントの管理、リクエストされた製品やサービスの提供、当社とのエクスペリエンスのカスタマイズなどに使用します。'
+                                    },
+                                    {
+                                        heading: '情報の共有',
+                                        content: '当社は、このプライバシーポリシーに記載されている場合や、お客様の許可がある場合を除き、お客様の個人情報を第三者と共有することはありません。'
+                                    },
+                                    {
+                                        heading: 'データセキュリティ',
+                                        content: '当社は、お客様の個人情報を紛失、盗難、誤用、不正アクセス、開示、改ざん、破壊から保護するために合理的な対策を講じています。'
+                                    },
+                                    {
+                                        heading: 'お問い合わせ',
+                                        content: 'このプライバシーポリシーについてご質問がある場合は、privacy@furdice.comまでお問い合わせください。'
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                };
+            },
+            methods: {
+                changeLanguage(langCode) {
+                    if (this.availableLanguages.hasOwnProperty(langCode)) {
+                        this.currentLanguage = langCode;
+                        // Optionally save language preference to localStorage
+                        localStorage.setItem('preferredLanguage', langCode);
+                    }
+                }
+            },
+            mounted() {
+                // Check if user has a saved language preference
+                const savedLanguage = localStorage.getItem('preferredLanguage');
+                if (savedLanguage && this.availableLanguages.hasOwnProperty(savedLanguage)) {
+                    this.currentLanguage = savedLanguage;
+                } else {
+                    // Try to detect browser language
+                    const browserLang = navigator.language.split('-')[0];
+                    if (this.availableLanguages.hasOwnProperty(browserLang)) {
+                        this.currentLanguage = browserLang;
+                    }
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html> 
