@@ -7,49 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .language-selector {
-            display: inline-block;
-            margin-left: 1rem;
-        }
-        .language-btn {
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            margin-left: 0.25rem;
-            cursor: pointer;
-        }
-        .language-btn.active {
-            background-color: #EAB308;
-            color: #111827;
-        }
-        .mobile-menu {
-            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-        }
-        .mobile-menu.open {
-            max-height: 300px;
-            opacity: 1;
-        }
-        @media (min-width: 768px) {
-            .mobile-menu-button {
-                display: none;
-            }
-            .desktop-menu {
-                display: flex;
-            }
-            .mobile-menu {
-                display: none;
-            }
-        }
-        @media (max-width: 767px) {
-            .desktop-menu {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body class="bg-gray-900 text-white">
     <div id="app" class="container mx-auto p-6">
