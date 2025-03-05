@@ -66,14 +66,25 @@
         <section class="my-10">
             <h2 class="text-4xl font-bold mb-8 text-center">{{ translations[currentLanguage].gamesSection.title }}</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div v-for="game in games" :key="game.id" class="p-6 bg-gray-800 rounded-lg game-card">
-                    <h3 class="text-2xl font-semibold mb-3">{{ game.name }}</h3>
-                    <p class="text-gray-300 mb-4">{{ getGameDescription(game) }}</p>
-                    <div class="mt-4">
-                        <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded">
-                            {{ translations[currentLanguage].gamesSection.playButton }}
-                        </button>
+            <div class="grid grid-cols-1 gap-8">
+                <div v-for="game in games" :key="game.id" class="bg-gray-800 rounded-lg overflow-hidden shadow-lg game-card">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <img :src="game.imageUrl" :alt="game.name" class="w-full h-auto">
+                        </div>
+                        <div class="p-6 md:w-2/3">
+                            <h3 class="text-2xl font-bold mb-3 text-white">{{ getGameName(game) }}</h3>
+                            <p class="text-gray-300 mb-4">{{ getGameDescription(game) }}</p>
+                            <p class="text-sm text-gray-400 mb-6">{{ translations[currentLanguage].gamesSection.releaseDate }}: {{ getGameReleaseDate(game) }}</p>
+                            <div>
+                                <a :href="game.storeUrl" class="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-medium py-2 px-4 rounded-md">
+                                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M3.609 1.814L13.792 12 3.61 22.186c-.18.18-.301.43-.301.7 0 .548.453 1 1 1 .24 0 .457-.08.633-.26L15.6 12.78c.19-.189.3-.449.3-.78 0-.32-.11-.58-.3-.78L4.941 1.074A.901.901 0 004.309.814c-.547 0-1 .453-1 1 0 .27.121.52.3.7z"/>
+                                    </svg>
+                                    Google Play Store
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,7 +111,8 @@
                             },
                             gamesSection: {
                                 title: 'Our Games',
-                                playButton: 'Play Now'
+                                playButton: 'Play Now',
+                                releaseDate: 'Release Date'
                             }
                         },
                         'ko': {
@@ -111,7 +123,8 @@
                             },
                             gamesSection: {
                                 title: '우리의 게임',
-                                playButton: '지금 플레이'
+                                playButton: '지금 플레이',
+                                releaseDate: '출시일'
                             }
                         },
                         'ja': {
@@ -122,36 +135,30 @@
                             },
                             gamesSection: {
                                 title: '私たちのゲーム',
-                                playButton: '今すぐプレイ'
+                                playButton: '今すぐプレイ',
+                                releaseDate: '発売日'
                             }
                         }
                     },
                     games: [
                         { 
-                            id: 1, 
-                            name: "Merge Cats", 
+                            id: 1,
+                            name: {
+                                en: 'There Were Eggs',
+                                ko: 'R이었었다',
+                                ja: 'たまごがいた'
+                            },
+                            imageUrl: 'assets/games/there_were_eggs.png',
+                            releaseDate: {
+                                en: 'May 2022',
+                                ko: '2022년 5월',
+                                ja: '2022年5月'
+                            },
+                            storeUrl: 'https://play.google.com/store/apps/details?id=games.furdice.egg',
                             description: {
-                                en: "A fun and addictive cat merging game!",
-                                ko: "재미있고 중독성 있는 고양이 합치기 게임!",
-                                ja: "楽しくて中毒性のある猫のマージゲーム！"
-                            }
-                        },
-                        { 
-                            id: 2, 
-                            name: "Jump Rope Challenge", 
-                            description: {
-                                en: "Jump and test your reflexes!",
-                                ko: "점프하고 당신의 반사 신경을 테스트하세요!",
-                                ja: "ジャンプして反射神経をテストしよう！"
-                            }
-                        },
-                        { 
-                            id: 3, 
-                            name: "Puzzle Quest", 
-                            description: {
-                                en: "Solve challenging puzzles in a magical world!",
-                                ko: "마법의 세계에서 도전적인 퍼즐을 풀어보세요!",
-                                ja: "魔法の世界で挑戦的なパズルを解こう！"
+                                en: 'A cute 2048-style merging game with adorable animal characters!',
+                                ko: '알과 캐릭터를 합쳐 점점 새로운 모습을 발견해 나가는 귀여운 2048 합치기 게임',
+                                ja: 'かわいい動物キャラクターと一緒に2048スタイルのマージゲーム！'
                             }
                         }
                     ]
@@ -167,6 +174,12 @@
                 },
                 getGameDescription(game) {
                     return game.description[this.currentLanguage] || game.description['en'];
+                },
+                getGameName(game) {
+                    return game.name[this.currentLanguage] || game.name['en'];
+                },
+                getGameReleaseDate(game) {
+                    return game.releaseDate[this.currentLanguage] || game.releaseDate['en'];
                 },
                 toggleMobileMenu() {
                     this.isMobileMenuOpen = !this.isMobileMenuOpen;
