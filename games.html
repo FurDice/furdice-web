@@ -3,12 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FurDice - Games</title>
+    <title>FurDice Games - Browse Our Mobile Game Collection</title>
+    
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="en" href="https://www.furdice.com/games.html">
+    <link rel="alternate" hreflang="ko" href="https://www.furdice.com/games.html?lang=ko">
+    <link rel="alternate" hreflang="ja" href="https://www.furdice.com/games.html?lang=ja">
+    <link rel="alternate" hreflang="x-default" href="https://www.furdice.com/games.html">
+    
+    <!-- Primary meta tags (English) -->
+    <meta name="description" content="Explore FurDice's collection of fun mobile games including 'There Were Eggs' and more. Download our games on Google Play Store.">
+    <meta name="keywords" content="mobile games, casual games, There Were Eggs, FurDice games, puzzle games">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.furdice.com/games.html">
+    <meta property="og:title" content="FurDice Games - Browse Our Mobile Game Collection">
+    <meta property="og:description" content="Explore FurDice's collection of fun mobile games including 'There Were Eggs' and more. Download our games on Google Play Store.">
+    <meta property="og:image" content="https://www.furdice.com/assets/games/there_were_eggs.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.furdice.com/games.html">
+    <meta property="twitter:title" content="FurDice Games - Browse Our Mobile Game Collection">
+    <meta property="twitter:description" content="Explore FurDice's collection of fun mobile games including 'There Were Eggs' and more. Download our games on Google Play Store.">
+    <meta property="twitter:image" content="https://www.furdice.com/assets/games/there_were_eggs.png">
+    
     <link rel="canonical" href="https://www.furdice.com/games.html">
     <link rel="icon" type="image/png" href="assets/icons/icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Dynamic language-specific meta tags (will be updated via JavaScript) -->
+    <script>
+        // This script will run before the page loads to set the correct language meta tags
+        (function() {
+            // Check for lang query parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            
+            const userLang = langParam || 
+                             localStorage.getItem('preferredLanguage') || 
+                             (navigator.language || navigator.userLanguage).split('-')[0];
+            
+            // Only proceed if language is Korean or Japanese
+            if (userLang === 'ko' || userLang === 'ja') {
+                const descriptions = {
+                    'ko': 'FurDice의 재미있는 모바일 게임 컬렉션을 탐색해보세요. \'R이었었다\'와 같은 게임을 Google Play 스토어에서 다운로드하세요.',
+                    'ja': 'FurDiceの楽しいモバイルゲームコレクションをご覧ください。「たまごがいた」などのゲームをGoogle Playストアからダウンロードしてください。'
+                };
+                
+                const titles = {
+                    'ko': 'FurDice 게임 - 모바일 게임 컬렉션 둘러보기',
+                    'ja': 'FurDiceゲーム - モバイルゲームコレクションを閲覧する'
+                };
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = userLang;
+                
+                // Update meta description
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) metaDesc.content = descriptions[userLang];
+                
+                // Update page title
+                document.title = titles[userLang];
+                
+                // Update OG and Twitter tags
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+                const twitterDesc = document.querySelector('meta[property="twitter:description"]');
+                
+                if (ogTitle) ogTitle.content = titles[userLang];
+                if (ogDesc) ogDesc.content = descriptions[userLang];
+                if (twitterTitle) twitterTitle.content = titles[userLang];
+                if (twitterDesc) twitterDesc.content = descriptions[userLang];
+                
+                // Also save to localStorage for consistency
+                localStorage.setItem('preferredLanguage', userLang);
+            }
+        })();
+    </script>
 </head>
 <body class="bg-gray-900 text-white">
     <div id="app" class="container mx-auto p-6">
@@ -170,8 +246,13 @@
                 changeLanguage(langCode) {
                     if (this.availableLanguages.hasOwnProperty(langCode)) {
                         this.currentLanguage = langCode;
-                        // Optionally save language preference to localStorage
+                        // Save language preference to localStorage
                         localStorage.setItem('preferredLanguage', langCode);
+                        
+                        // Update URL with the language parameter without page reload
+                        const url = new URL(window.location);
+                        url.searchParams.set('lang', langCode);
+                        window.history.pushState({}, '', url);
                     }
                 },
                 getGameDescription(game) {
@@ -188,15 +269,24 @@
                 }
             },
             mounted() {
-                // Check if user has a saved language preference
-                const savedLanguage = localStorage.getItem('preferredLanguage');
-                if (savedLanguage && this.availableLanguages.hasOwnProperty(savedLanguage)) {
-                    this.currentLanguage = savedLanguage;
+                // First check URL parameter
+                const urlParams = new URLSearchParams(window.location.search);
+                const langParam = urlParams.get('lang');
+                
+                if (langParam && this.availableLanguages.hasOwnProperty(langParam)) {
+                    this.currentLanguage = langParam;
+                    localStorage.setItem('preferredLanguage', langParam);
                 } else {
-                    // Try to detect browser language
-                    const browserLang = navigator.language.split('-')[0];
-                    if (this.availableLanguages.hasOwnProperty(browserLang)) {
-                        this.currentLanguage = browserLang;
+                    // Check if user has a saved language preference
+                    const savedLanguage = localStorage.getItem('preferredLanguage');
+                    if (savedLanguage && this.availableLanguages.hasOwnProperty(savedLanguage)) {
+                        this.currentLanguage = savedLanguage;
+                    } else {
+                        // Try to detect browser language
+                        const browserLang = navigator.language.split('-')[0];
+                        if (this.availableLanguages.hasOwnProperty(browserLang)) {
+                            this.currentLanguage = browserLang;
+                        }
                     }
                 }
             }
