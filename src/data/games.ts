@@ -57,7 +57,7 @@ export const GAMES: Game[] = [
     image: mergeCats,
     storeUrl: 'https://play.google.com/store/apps/details?id=com.furdice.mergecats',
     features: { ads: true, iap: true, cloudSave: false, euConsent: false },
-    featuresConfirmed: false,
+    featuresConfirmed: true,
   },
   {
     slug: 'there-were-eggs',
@@ -100,8 +100,8 @@ export const GAMES: Game[] = [
     released: '2021-09',
     image: lumRun,
     storeUrl: 'https://play.google.com/store/apps/details?id=com.furdice.lumrun',
-    features: { ads: true, iap: true, cloudSave: false, euConsent: false },
-    featuresConfirmed: false,
+    features: { ads: true, iap: false, cloudSave: false, euConsent: false },
+    featuresConfirmed: true,
   },
 ];
 
