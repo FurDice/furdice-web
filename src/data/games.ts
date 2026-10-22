@@ -12,6 +12,8 @@ export interface GameFeatures {
   iap: boolean;
   /** Google Play 게임즈 서비스 클라우드 저장 */
   cloudSave: boolean;
+  /** EEA·영국·스위스 동의 화면 (AdMob 유럽 규정 메시지 대상 + 앱에 UMP SDK) */
+  euConsent: boolean;
 }
 
 export interface Game {
@@ -54,7 +56,7 @@ export const GAMES: Game[] = [
     released: '2025-04',
     image: mergeCats,
     storeUrl: 'https://play.google.com/store/apps/details?id=com.furdice.mergecats',
-    features: { ads: true, iap: true, cloudSave: false },
+    features: { ads: true, iap: true, cloudSave: false, euConsent: false },
     featuresConfirmed: false,
   },
   {
@@ -76,7 +78,7 @@ export const GAMES: Game[] = [
     released: '2022-05',
     image: thereWereEggs,
     storeUrl: 'https://play.google.com/store/apps/details?id=games.furdice.egg',
-    features: { ads: true, iap: true, cloudSave: true },
+    features: { ads: true, iap: true, cloudSave: true, euConsent: true },
     featuresConfirmed: true,
   },
   {
@@ -98,7 +100,7 @@ export const GAMES: Game[] = [
     released: '2021-09',
     image: lumRun,
     storeUrl: 'https://play.google.com/store/apps/details?id=com.furdice.lumrun',
-    features: { ads: true, iap: true, cloudSave: false },
+    features: { ads: true, iap: true, cloudSave: false, euConsent: false },
     featuresConfirmed: false,
   },
 ];

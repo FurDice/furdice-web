@@ -11,11 +11,11 @@ interface Props {
 const { lang, table } = Astro.props;
 
 const L = {
-  en: { app: 'App', pkg: 'Package', ads: 'Ads (AdMob)', iap: 'In-app purchases', cloud: 'Cloud save', yes: 'Yes', no: '—',
+  en: { app: 'App', pkg: 'Package', ads: 'Ads (AdMob)', iap: 'In-app purchases', cloud: 'Cloud save', consent: 'EU consent form', yes: 'Yes', no: '—',
         type: 'Data', by: 'Collected by', shared: 'Shared with third parties', req: 'Required / optional', purpose: 'Purpose', sharedYes: 'Yes (Google)', sharedNo: 'No' },
-  ko: { app: '앱', pkg: '패키지명', ads: '광고 (AdMob)', iap: '인앱 구매', cloud: '클라우드 저장', yes: '사용', no: '—',
+  ko: { app: '앱', pkg: '패키지명', ads: '광고 (AdMob)', iap: '인앱 구매', cloud: '클라우드 저장', consent: '유럽 동의 화면', yes: '사용', no: '—',
         type: '항목', by: '수집 주체', shared: '제3자 제공', req: '필수/선택', purpose: '목적', sharedYes: '예 (Google)', sharedNo: '아니요' },
-  ja: { app: 'アプリ', pkg: 'パッケージ名', ads: '広告（AdMob）', iap: 'アプリ内購入', cloud: 'クラウドセーブ', yes: 'あり', no: '—',
+  ja: { app: 'アプリ', pkg: 'パッケージ名', ads: '広告（AdMob）', iap: 'アプリ内購入', cloud: 'クラウドセーブ', consent: 'EU同意画面', yes: 'あり', no: '—',
         type: 'データ', by: '収集者', shared: '第三者提供', req: '必須／任意', purpose: '目的', sharedYes: 'あり（Google）', sharedNo: 'なし' },
 }[lang];
 
@@ -26,7 +26,7 @@ const mark = (v: boolean) => (v ? L.yes : L.no);
   <div class="table-scroll">
     <table>
       <thead>
-        <tr><th>{L.app}</th><th>{L.pkg}</th><th>{L.ads}</th><th>{L.iap}</th><th>{L.cloud}</th></tr>
+        <tr><th>{L.app}</th><th>{L.pkg}</th><th>{L.ads}</th><th>{L.iap}</th><th>{L.cloud}</th><th>{L.consent}</th></tr>
       </thead>
       <tbody>
         {GAMES.map((g) => (
@@ -36,6 +36,7 @@ const mark = (v: boolean) => (v ? L.yes : L.no);
             <td class:list={{ yes: g.features.ads }}>{mark(g.features.ads)}</td>
             <td class:list={{ yes: g.features.iap }}>{mark(g.features.iap)}</td>
             <td class:list={{ yes: g.features.cloudSave }}>{mark(g.features.cloudSave)}</td>
+            <td class:list={{ yes: g.features.euConsent }}>{mark(g.features.euConsent)}</td>
           </tr>
         ))}
       </tbody>
