@@ -1,0 +1,150 @@
+---
+// 영어가 원본. 내용을 바꾸면 PolicyKo / PolicyJa도 같은 내용으로 맞춘다.
+import Tables from './Tables.astro';
+import { HEADINGS } from './sections';
+import { SITE } from '../data/site';
+
+const H = HEADINGS.en;
+const mail = `mailto:${SITE.email}`;
+---
+
+<p>
+  This Privacy Policy explains what data is processed when you use mobile games published by FurDice, who processes it, and how you can control it.
+  It applies to every app listed in section 1 and to this website.
+</p>
+
+<h2 id="who">1. {H.who}</h2>
+<p>
+  The apps are published by <strong>FurDice</strong>, an independent game developer in the Republic of Korea (developer name on Google Play: FurDice).
+  Contact: <a href={mail}>{SITE.email}</a>.
+</p>
+<p>This policy applies to the following apps. The table shows which Google services each app uses.</p>
+<Tables lang="en" table="apps" />
+
+<h2 id="summary">2. {H.summary}</h2>
+<ul>
+  <li>Our apps have <strong>no sign-up or account</strong>, and we do <strong>not operate our own servers</strong>. The apps do not ask for your name, email address or phone number.</li>
+  <li>Ads are provided by <strong>Google AdMob</strong>. AdMob collects device identifiers and usage data to show and measure ads.</li>
+  <li>In-app purchases are processed by <strong>Google Play</strong>. We never receive your payment details.</li>
+  <li>Cloud save (where available) uses <strong>Google Play Games services</strong> and only works if you sign in.</li>
+  <li>Your game progress is otherwise stored only on your device.</li>
+</ul>
+
+<h2 id="data">3. {H.data}</h2>
+<p>
+  The table below matches the Data safety section we submitted to Google Play. Data is collected only if the app uses the related service (see section 1).
+  All data is encrypted in transit (TLS).
+</p>
+<Tables lang="en" table="data" />
+<p>We, FurDice, do not receive the data collected by AdMob in a form that identifies you. We only see aggregated ad reports.</p>
+
+<h2 id="services">4. {H.services}</h2>
+
+<h3>4.1 Advertising (Google AdMob)</h3>
+<p>
+  Our apps show banner, interstitial and/or rewarded ads through Google AdMob. When an ad is requested or shown, AdMob collects the data listed in section 3
+  (advertising ID, app set ID, IP address and approximate location derived from it, app interactions and diagnostics) and uses it to deliver and measure ads,
+  limit how often you see the same ad, and prevent fraud.
+</p>
+<p>
+  Whether ads are personalised depends on your device settings and, in some regions, your consent. You can reset or delete your advertising ID at any time
+  (see section 8). Learn more in
+  <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from sites or apps that use its services</a>
+  and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+</p>
+
+<h3>4.2 Consent (EEA, UK and Switzerland)</h3>
+<p>
+  If you are in the European Economic Area, the United Kingdom or Switzerland, the app shows a consent form from Google's User Messaging Platform (a Google-certified
+  consent management platform) the first time you open it. You can choose whether your data may be used for personalised ads. You can change your choice at any time
+  with the <strong>Privacy settings</strong> button in the game's settings.
+</p>
+
+<h3>4.3 In-app purchases (Google Play billing)</h3>
+<p>
+  Payments are handled entirely by Google Play. Card and payment details are never shared with us. The app receives only the purchased product ID and purchase status,
+  delivers the item, and stores the resulting entitlement (for example "ads removed") on your device so it can be restored.
+  See the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.
+</p>
+
+<h3>4.4 Cloud save (Google Play Games services)</h3>
+<p>
+  Only if you sign in to Google Play Games, the app saves your game progress (such as level progress, item counts and settings) to Google Play Games storage
+  so you can continue on another device. This data is not sent to us.
+</p>
+
+<h3>4.5 On-device storage</h3>
+<p>Game progress is saved in the app's private storage on your device. It does not leave your device, except as cloud save described in 4.4.</p>
+
+<h2 id="purposes">5. {H.purposes}</h2>
+<ul>
+  <li><strong>Showing and measuring ads, preventing ad fraud</strong> — AdMob data. Legal basis (where GDPR applies): your consent for personalised ads; our legitimate interest in funding free games for non-personalised ads and fraud prevention.</li>
+  <li><strong>Delivering and restoring purchases</strong> — purchase data. Legal basis: performance of a contract.</li>
+  <li><strong>Saving your progress across devices</strong> — cloud save data. Legal basis: performance of a contract (the feature you chose to use).</li>
+</ul>
+<p>We do not sell your personal information and do not use it for any other purpose.</p>
+
+<h2 id="transfer">6. {H.transfer}</h2>
+<p>
+  The data in section 3 is collected and processed by <strong>Google LLC</strong> (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) and its affiliates.
+  It is transmitted over the network from your device to Google's servers, which may be located in the United States and other countries, whenever the app requests an ad,
+  makes a purchase or syncs a cloud save. Google retains it according to its own policies. Google relies on legal safeguards such as Standard Contractual Clauses for transfers
+  from the EEA and UK.
+</p>
+<p>
+  If you do not want this transfer, you can delete your advertising ID, opt out of personalised ads, avoid purchases and cloud save, or stop using and uninstall the app.
+  Some data is still needed to show any ad at all, so the app cannot run ads without it.
+</p>
+
+<h2 id="retention">7. {H.retention}</h2>
+<ul>
+  <li><strong>On-device data</strong>: kept until you uninstall the app or clear its data.</li>
+  <li><strong>Cloud save data</strong>: kept until you delete it in Google Play Games.</li>
+  <li><strong>Advertising data</strong>: kept by Google according to Google's retention policy.</li>
+  <li><strong>Purchase records</strong>: kept by Google Play according to Google's policy and applicable law.</li>
+  <li><strong>Emails you send us</strong>: kept only as long as needed to answer, then deleted.</li>
+</ul>
+
+<h2 id="rights">8. {H.rights}</h2>
+<ul>
+  <li><strong>Advertising ID</strong>: on Android, open Settings → Google → Ads (or Settings → Privacy → Ads) to reset or delete it.</li>
+  <li><strong>Personalised ads</strong>: manage at <a href="https://myadcenter.google.com" rel="noopener">My Ad Center</a>; in the EEA/UK/Switzerland also via the in-game Privacy settings button.</li>
+  <li><strong>Cloud save data</strong>: delete it in the Google Play Games app or your Google Account settings.</li>
+  <li><strong>On-device data</strong>: uninstall the app, or clear its storage in Android Settings → Apps.</li>
+  <li><strong>Purchases</strong>: managed in your Google Play account (Order history).</li>
+</ul>
+<p>
+  Depending on where you live, you may have the right to access, correct, delete, restrict or object to the processing of your data, to withdraw consent, and to complain to a
+  data protection authority. Because we do not hold data that identifies you, most requests are handled directly through the Google tools above, but you can always
+  email us at <a href={mail}>{SITE.email}</a> and we will help. We will respond without undue delay.
+</p>
+
+<h2 id="children">9. {H.children}</h2>
+<p>
+  Our apps are not directed at children under 13 (the target audience in Google Play Console is 13 and older). We do not knowingly collect personal information from children
+  under 13. If you believe a child has provided data, contact us and we will help delete it.
+</p>
+
+<h2 id="security">10. {H.security}</h2>
+<p>
+  We do not run servers or store your personal data ourselves, which keeps the data we handle to a minimum. All network traffic from the apps is encrypted (TLS),
+  and access to our developer and advertising accounts is limited to FurDice staff.
+</p>
+
+<h2 id="website">11. {H.website}</h2>
+<p>
+  This website (furdice.com) does not use cookies, analytics or advertising, and does not load third-party scripts or fonts. It is hosted on GitHub Pages;
+  GitHub may log visitors' IP addresses for security purposes (see the
+  <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>).
+</p>
+
+<h2 id="changes">12. {H.changes}</h2>
+<p>
+  When this policy changes, we will update this page and the effective date at the top. For significant changes we will also give notice in the app or on this website.
+</p>
+
+<h2 id="contact">13. {H.contact}</h2>
+<p>
+  FurDice — Email: <a href={mail}>{SITE.email}</a><br />
+  Privacy officer: {SITE.privacyOfficer} (<a href={mail}>{SITE.email}</a>)
+</p>

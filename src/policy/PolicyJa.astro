@@ -1,0 +1,140 @@
+---
+// 英語版(PolicyEn)の翻訳。内容は英語版と一致させる。
+import Tables from './Tables.astro';
+import { HEADINGS } from './sections';
+import { SITE } from '../data/site';
+
+const H = HEADINGS.ja;
+const mail = `mailto:${SITE.email}`;
+---
+
+<p>
+  本プライバシーポリシーは、FurDice が配信するモバイルゲームをご利用いただく際に、どのようなデータが誰によって取り扱われるか、またその管理方法を説明するものです。
+  第1条に記載するすべてのアプリと本ウェブサイトに適用されます。英語版と内容に相違がある場合は英語版が優先されます。
+</p>
+
+<h2 id="who">1. {H.who}</h2>
+<p>
+  アプリは、大韓民国のインディーゲーム開発者 <strong>FurDice</strong> が配信しています（Google Play のデベロッパー名：FurDice）。連絡先：<a href={mail}>{SITE.email}</a>
+</p>
+<p>本ポリシーの対象アプリと、各アプリが利用する Google のサービスは次のとおりです。</p>
+<Tables lang="ja" table="apps" />
+
+<h2 id="summary">2. {H.summary}</h2>
+<ul>
+  <li>アプリには<strong>会員登録やアカウントはなく</strong>、当社は<strong>独自のサーバーを運営していません</strong>。アプリが氏名、メールアドレス、電話番号などを直接収集することはありません。</li>
+  <li>広告は <strong>Google AdMob</strong> が提供します。AdMob は広告の配信・測定のために端末識別子と利用情報を収集します。</li>
+  <li>アプリ内購入は <strong>Google Play</strong> が処理し、支払い情報が当社に渡ることはありません。</li>
+  <li>クラウドセーブ（対応アプリのみ）は <strong>Google Play ゲーム サービス</strong>を利用し、ログインした場合のみ動作します。</li>
+  <li>それ以外のゲーム進行データは、お客様の端末内にのみ保存されます。</li>
+</ul>
+
+<h2 id="data">3. {H.data}</h2>
+<p>
+  下の表は、Google Play に提出したデータセーフティの申告内容と同じです。各データは、該当するサービスを利用するアプリ（第1条の表を参照）でのみ収集されます。
+  すべてのデータは送信時に暗号化（TLS）されます。
+</p>
+<Tables lang="ja" table="data" />
+<p>当社は AdMob が収集したデータを個人を特定できる形で受け取ることはなく、集計された広告レポートのみを確認しています。</p>
+
+<h2 id="services">4. {H.services}</h2>
+
+<h3>4.1 広告（Google AdMob）</h3>
+<p>
+  アプリは Google AdMob を通じてバナー広告、インタースティシャル広告、リワード広告を表示します。広告のリクエストや表示の際、AdMob は第3条のデータ
+  （広告ID、アプリセットID、IPアドレスとそこから推定したおおよその位置情報、アプリ操作、診断情報）を収集し、広告の配信・測定、同じ広告の表示回数の制限、不正防止に使用します。
+</p>
+<p>
+  パーソナライズ広告の有無は、端末の設定と地域ごとの同意によって決まります。広告IDはいつでもリセットまたは削除できます（第8条参照）。詳しくは
+  <a href="https://policies.google.com/technologies/partner-sites?hl=ja" rel="noopener">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>
+  および <a href="https://policies.google.com/privacy?hl=ja" rel="noopener">Google プライバシー ポリシー</a>をご覧ください。
+</p>
+
+<h3>4.2 同意（欧州経済領域・英国・スイス）</h3>
+<p>
+  欧州経済領域（EEA）、英国、スイスのお客様には、初回起動時に Google のユーザー メッセージ プラットフォーム（Google 認定の同意管理プラットフォーム）の同意画面が表示され、
+  パーソナライズ広告へのデータ利用を選択できます。選択はゲーム設定の<strong>プライバシー設定</strong>ボタンからいつでも変更できます。
+</p>
+
+<h3>4.3 アプリ内購入（Google Play 課金）</h3>
+<p>
+  決済はすべて Google Play が処理し、カード番号などの支払い情報が当社に共有されることはありません。アプリは購入した商品IDと購入状態のみを受け取ってアイテムを付与し、
+  復元のために「広告削除」などの権利情報のみを端末に保存します。
+</p>
+
+<h3>4.4 クラウドセーブ（Google Play ゲーム サービス）</h3>
+<p>
+  お客様が Google Play ゲームにログインした場合のみ、ゲームの進行データ（進行度、アイテム数、設定など）を Google Play ゲームのストレージに保存し、別の端末で続きから遊べるようにします。
+  このデータが当社に送信されることはありません。
+</p>
+
+<h3>4.5 端末内の保存</h3>
+<p>ゲームの進行データは端末内のアプリ専用領域に保存され、4.4 のクラウドセーブを除き、端末の外に送信されることはありません。</p>
+
+<h2 id="purposes">5. {H.purposes}</h2>
+<ul>
+  <li><strong>広告の配信・測定と不正防止</strong> — AdMob が収集するデータ（EEA等では、パーソナライズ広告はお客様の同意、非パーソナライズ広告と不正防止は無料ゲーム提供のための正当な利益に基づきます）</li>
+  <li><strong>購入アイテムの付与・復元</strong> — 購入データ（契約の履行）</li>
+  <li><strong>別の端末での進行状況の引き継ぎ</strong> — クラウドセーブのデータ（契約の履行）</li>
+</ul>
+<p>当社は個人情報を販売せず、上記以外の目的には使用しません。</p>
+
+<h2 id="transfer">6. {H.transfer}</h2>
+<p>
+  第3条のデータは、<strong>Google LLC</strong>（1600 Amphitheatre Parkway, Mountain View, CA 94043, USA）およびその関連会社が収集・処理します。
+  アプリが広告をリクエストしたとき、購入したとき、クラウドセーブを同期したときに、端末から Google のサーバー（米国その他の国に所在する場合があります）へネットワーク経由で送信され、
+  Google のポリシーに従って保存されます。米国には EU や日本と同等の包括的な個人情報保護法はありませんが、Google は標準契約条項などの保護措置を講じています。
+</p>
+<p>
+  この移転を望まない場合は、広告IDの削除、パーソナライズ広告のオプトアウト、購入やクラウドセーブを使用しないこと、アプリの利用停止・アンインストールによって拒否できます。
+  なお、広告を表示するためには最低限のデータ送信が必要です。
+</p>
+
+<h2 id="retention">7. {H.retention}</h2>
+<ul>
+  <li><strong>端末内のデータ</strong>：アプリを削除するか、アプリのデータを消去するまで</li>
+  <li><strong>クラウドセーブのデータ</strong>：お客様が Google Play ゲームで削除するまで</li>
+  <li><strong>広告関連データ</strong>：Google の保存ポリシーに従います</li>
+  <li><strong>購入記録</strong>：Google Play のポリシーおよび関係法令に従います</li>
+  <li><strong>お問い合わせメール</strong>：回答に必要な期間のみ保存し、その後削除します</li>
+</ul>
+
+<h2 id="rights">8. {H.rights}</h2>
+<ul>
+  <li><strong>広告ID</strong>：Android の設定 → Google → 広告（または 設定 → プライバシー → 広告）でリセット・削除</li>
+  <li><strong>パーソナライズ広告</strong>：<a href="https://myadcenter.google.com/?hl=ja" rel="noopener">マイ アド センター</a>で管理。EEA・英国・スイスではゲーム内のプライバシー設定ボタンからも変更可能</li>
+  <li><strong>クラウドセーブのデータ</strong>：Google Play ゲーム アプリまたは Google アカウントの設定で該当ゲームのデータを削除</li>
+  <li><strong>端末内のデータ</strong>：アプリをアンインストールするか、Android の設定 → アプリ でストレージを消去</li>
+  <li><strong>購入</strong>：Google Play アカウントの注文履歴で管理</li>
+</ul>
+<p>
+  お住まいの地域の法令により、お客様にはデータの開示、訂正、削除、利用停止、同意の撤回、監督機関への苦情申し立てなどの権利があります。
+  当社はお客様を特定できるデータを保有していないため、多くの場合は上記の Google のツールで直接対応できますが、<a href={mail}>{SITE.email}</a> までメールでご連絡いただければ、遅滞なく対応します。
+</p>
+
+<h2 id="children">9. {H.children}</h2>
+<p>
+  当社のアプリは13歳未満の子どもを対象としていません（Google Play Console のターゲット年齢：13歳以上）。13歳未満の子どもの個人情報を故意に収集することはありません。
+  子どもがデータを提供したと思われる場合はご連絡ください。削除に協力します。
+</p>
+
+<h2 id="security">10. {H.security}</h2>
+<p>
+  当社はサーバーを運営せず、個人データを自ら保存しないことで、取り扱うデータを最小限にしています。アプリの通信はすべて暗号化（TLS）され、
+  開発者・広告アカウントへのアクセスは FurDice のメンバーに限定しています。
+</p>
+
+<h2 id="website">11. {H.website}</h2>
+<p>
+  本ウェブサイト（furdice.com）は Cookie、アクセス解析、広告を使用せず、外部のスクリプトやウェブフォントも読み込みません。サイトは GitHub Pages でホストされており、
+  GitHub はセキュリティ目的で訪問者のIPアドレスを記録する場合があります（<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub のプライバシーステートメント</a>）。
+</p>
+
+<h2 id="changes">12. {H.changes}</h2>
+<p>本ポリシーを変更する場合は、このページと冒頭の施行日を更新し、重要な変更についてはアプリ内または本ウェブサイトでお知らせします。</p>
+
+<h2 id="contact">13. {H.contact}</h2>
+<p>
+  FurDice — メール：<a href={mail}>{SITE.email}</a><br />
+  個人情報保護責任者：{SITE.privacyOfficer}（<a href={mail}>{SITE.email}</a>）
+</p>

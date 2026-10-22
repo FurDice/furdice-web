@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Google-adstxt
+Allow: /
+
+Sitemap: https://furdice.com/sitemap.xml

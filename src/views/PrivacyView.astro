@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import PolicyEn from '../policy/PolicyEn.astro';
+import PolicyKo from '../policy/PolicyKo.astro';
+import PolicyJa from '../policy/PolicyJa.astro';
+import { HEADINGS, SECTION_IDS } from '../policy/sections';
+import { SITE, formatDate, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const Body = { en: PolicyEn, ko: PolicyKo, ja: PolicyJa }[lang];
+const H = HEADINGS[lang];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: t(lang, 'privacy.title'),
+  inLanguage: lang,
+  dateModified: SITE.policyEffectiveDate,
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+};
+---
+
+<Base lang={lang} path="/privacy/" title={`${t(lang, 'privacy.title')} — FurDice`} description={t(lang, 'privacy.description')} ogType="article" jsonLd={jsonLd}>
+  <div class="doc wrap">
+    <div class="doc-grid">
+      <nav class="toc" aria-label={t(lang, 'privacy.toc')}>
+        <p><strong>{t(lang, 'privacy.toc')}</strong></p>
+        <ol>
+          {SECTION_IDS.map((id) => <li><a href={`#${id}`}>{H[id]}</a></li>)}
+        </ol>
+      </nav>
+      <article class="doc-body">
+        <h1>{t(lang, 'privacy.title')}</h1>
+        <p class="doc-meta">
+          FurDice · {t(lang, 'privacy.effective')}: <time datetime={SITE.policyEffectiveDate}>{formatDate(SITE.policyEffectiveDate, lang)}</time>
+        </p>
+        <Body />
+      </article>
+    </div>
+  </div>
+</Base>

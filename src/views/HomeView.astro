@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import GameCard from '../components/GameCard.astro';
+import { GAMES } from '../data/games';
+import { SITE, localePath, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/icon.png`,
+  email: SITE.email,
+  sameAs: [SITE.playDeveloperUrl],
+};
+---
+
+<Base lang={lang} path="/" title={t(lang, 'home.title')} description={t(lang, 'home.description')} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">{t(lang, 'home.eyebrow')}</span>
+      <h1>{t(lang, 'home.headline')}</h1>
+      <p class="lead">{t(lang, 'home.lead')}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={localePath(lang, '/games/')}>{t(lang, 'home.cta.games')}</a>
+        <a class="btn" href={`mailto:${SITE.email}`}>{t(lang, 'home.cta.contact')}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{t(lang, 'home.games.title')}</h2>
+        <a href={localePath(lang, '/games/')}>{t(lang, 'nav.games')} →</a>
+      </div>
+      <ul class="game-grid">
+        {GAMES.map((game) => <GameCard game={game} lang={lang} />)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two-col">
+      <div>
+        <h2>{t(lang, 'home.about.title')}</h2>
+        <p class="prose-narrow">{t(lang, 'home.about.body')}</p>
+      </div>
+      <div id="contact">
+        <h2>{t(lang, 'home.contact.title')}</h2>
+        <p class="prose-narrow">{t(lang, 'home.contact.body')}</p>
+        <p><a href={`mailto:${SITE.email}`}><strong>{SITE.email}</strong></a></p>
+      </div>
+    </div>
+  </section>
+</Base>

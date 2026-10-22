@@ -1,0 +1,65 @@
+---
+import { GAMES } from '../data/games';
+import type { Lang } from '../data/site';
+import { DATA_TYPES } from './dataTypes';
+
+interface Props {
+  lang: Lang;
+  table: 'apps' | 'data';
+}
+
+const { lang, table } = Astro.props;
+
+const L = {
+  en: { app: 'App', pkg: 'Package', ads: 'Ads (AdMob)', iap: 'In-app purchases', cloud: 'Cloud save', yes: 'Yes', no: '—',
+        type: 'Data', by: 'Collected by', shared: 'Shared with third parties', req: 'Required / optional', purpose: 'Purpose', sharedYes: 'Yes (Google)', sharedNo: 'No' },
+  ko: { app: '앱', pkg: '패키지명', ads: '광고 (AdMob)', iap: '인앱 구매', cloud: '클라우드 저장', yes: '사용', no: '—',
+        type: '항목', by: '수집 주체', shared: '제3자 제공', req: '필수/선택', purpose: '목적', sharedYes: '예 (Google)', sharedNo: '아니요' },
+  ja: { app: 'アプリ', pkg: 'パッケージ名', ads: '広告（AdMob）', iap: 'アプリ内購入', cloud: 'クラウドセーブ', yes: 'あり', no: '—',
+        type: 'データ', by: '収集者', shared: '第三者提供', req: '必須／任意', purpose: '目的', sharedYes: 'あり（Google）', sharedNo: 'なし' },
+}[lang];
+
+const mark = (v: boolean) => (v ? L.yes : L.no);
+---
+
+{table === 'apps' && (
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>{L.app}</th><th>{L.pkg}</th><th>{L.ads}</th><th>{L.iap}</th><th>{L.cloud}</th></tr>
+      </thead>
+      <tbody>
+        {GAMES.map((g) => (
+          <tr>
+            <td><strong>{g.name[lang]}</strong>{g.name[lang] !== g.name.en && <><br />{g.name.en}</>}</td>
+            <td><code>{g.packageName}</code></td>
+            <td class:list={{ yes: g.features.ads }}>{mark(g.features.ads)}</td>
+            <td class:list={{ yes: g.features.iap }}>{mark(g.features.iap)}</td>
+            <td class:list={{ yes: g.features.cloudSave }}>{mark(g.features.cloudSave)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+{table === 'data' && (
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>{L.type}</th><th>{L.by}</th><th>{L.shared}</th><th>{L.req}</th><th>{L.purpose}</th></tr>
+      </thead>
+      <tbody>
+        {DATA_TYPES.map((d) => (
+          <tr>
+            <td>{d.type[lang]}</td>
+            <td>{d.by}</td>
+            <td>{d.shared ? L.sharedYes : L.sharedNo}</td>
+            <td>{d.required[lang]}</td>
+            <td>{d.purpose[lang]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}

@@ -1,0 +1,90 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import type { Game } from '../data/games';
+import { SITE, localePath, formatMonth, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+  game: Game;
+}
+
+const { lang, game } = Astro.props;
+const path = `/games/${game.slug}/`;
+const og = await getImage({ src: game.image, width: 1024, format: 'png' });
+const releasedLabel = formatMonth(game.released, lang);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: game.name[lang],
+  alternateName: Object.values(game.name).filter((n) => n !== game.name[lang]),
+  description: game.description[lang],
+  url: new URL(localePath(lang, path), SITE.url).href,
+  image: new URL(og.src, SITE.url).href,
+  genre: game.genre[lang],
+  gamePlatform: game.platforms.map((p) => (p === 'android' ? 'Android' : 'PC')),
+  operatingSystem: game.platforms.includes('android') ? 'Android' : undefined,
+  applicationCategory: 'GameApplication',
+  datePublished: game.released,
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  installUrl: game.storeUrl,
+  offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD', url: game.storeUrl },
+};
+---
+
+<Base
+  lang={lang}
+  path={path}
+  title={`${game.name[lang]} — FurDice`}
+  description={`${game.tagline[lang]} ${game.description[lang]}`}
+  ogImage={og.src}
+  jsonLd={jsonLd}
+>
+  <section class="game-hero">
+    <div class="wrap">
+      <p class="crumb"><a href={localePath(lang, '/games/')}>← {t(lang, 'game.back')}</a></p>
+      <div class="game-hero-grid">
+        <Image src={game.image} alt={game.name[lang]} widths={[640, 1024]} sizes="(max-width: 820px) 100vw, 620px" loading="eager" />
+        <div>
+          <h1>{game.name[lang]}</h1>
+          <p class="lead">{game.tagline[lang]}</p>
+          <p>{game.description[lang]}</p>
+          <dl class="facts">
+            <dt>{t(lang, 'game.genre')}</dt>
+            <dd>{game.genre[lang]}</dd>
+            <dt>{t(lang, 'game.platform')}</dt>
+            <dd>{game.platforms.map((p) => t(lang, `platform.${p}`)).join(', ')}</dd>
+            <dt>{t(lang, 'game.released')}</dt>
+            <dd>{releasedLabel}</dd>
+            <dt>{t(lang, 'game.package')}</dt>
+            <dd><code>{game.packageName}</code></dd>
+          </dl>
+          <a class="btn btn-primary" href={game.storeUrl} rel="noopener">{t(lang, 'game.getItOn')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two-col">
+      <div class="card">
+        <h2>{t(lang, 'game.privacy.title')}</h2>
+        <ul class="check-list">
+          {game.features.ads && <li>{t(lang, 'game.privacy.ads')}</li>}
+          {game.features.iap && <li>{t(lang, 'game.privacy.iap')}</li>}
+          {game.features.cloudSave && <li>{t(lang, 'game.privacy.cloud')}</li>}
+          <li>{t(lang, 'game.privacy.none')}</li>
+        </ul>
+        <a href={localePath(lang, '/privacy/')}>{t(lang, 'game.privacy.full')} →</a>
+      </div>
+      <div class="card">
+        <h2>{t(lang, 'game.support.title')}</h2>
+        <p>{t(lang, 'game.support.body')}</p>
+        <p><a href={`mailto:${SITE.email}?subject=${encodeURIComponent(game.name.en)}`}><strong>{SITE.email}</strong></a></p>
+      </div>
+    </div>
+  </section>
+</Base>

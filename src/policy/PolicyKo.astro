@@ -1,0 +1,163 @@
+---
+// 영어판(PolicyEn)과 같은 내용 + 개인정보 보호법상 필수 기재 사항.
+import Tables from './Tables.astro';
+import { HEADINGS } from './sections';
+import { SITE } from '../data/site';
+
+const H = HEADINGS.ko;
+const mail = `mailto:${SITE.email}`;
+---
+
+<p>
+  FurDice(퍼다이스, 이하 "퍼다이스")는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 관련 고충을 원활하게 처리하기 위해 다음과 같이 개인정보처리방침을 수립·공개합니다.
+  이 방침은 아래 1조의 모든 앱과 이 웹사이트에 적용됩니다.
+</p>
+
+<h2 id="who">1. {H.who}</h2>
+<p>
+  앱은 대한민국의 인디 게임 개발사 <strong>FurDice</strong>가 배포합니다 (Google Play 개발자명: FurDice). 연락처: <a href={mail}>{SITE.email}</a>
+</p>
+<p>이 방침이 적용되는 앱과, 앱별로 사용하는 Google 서비스는 다음과 같습니다.</p>
+<Tables lang="ko" table="apps" />
+
+<h2 id="summary">2. {H.summary}</h2>
+<ul>
+  <li>앱에는 <strong>회원가입·계정이 없고</strong>, 퍼다이스는 <strong>자체 서버를 운영하지 않습니다</strong>. 앱이 이름, 이메일, 전화번호 등을 직접 수집하지 않습니다.</li>
+  <li>광고는 <strong>Google AdMob</strong>이 제공하며, AdMob은 광고 제공·측정을 위해 기기 식별자와 이용 정보를 수집합니다.</li>
+  <li>인앱 결제는 <strong>Google Play</strong>가 처리하며, 결제 정보는 퍼다이스에 전달되지 않습니다.</li>
+  <li>클라우드 저장(지원하는 앱)은 <strong>Google Play 게임즈 서비스</strong>를 사용하며, 로그인한 경우에만 동작합니다.</li>
+  <li>그 밖의 게임 진행 데이터는 이용자의 기기 안에만 저장됩니다.</li>
+</ul>
+
+<h2 id="data">3. {H.data}</h2>
+<p>
+  아래 표는 Google Play에 제출한 데이터 보안 신고 내용과 같습니다. 각 항목은 해당 서비스를 사용하는 앱(1조 표 참고)에서만 수집됩니다.
+  모든 데이터는 전송 중 암호화(TLS)됩니다.
+</p>
+<Tables lang="ko" table="data" />
+<p>퍼다이스는 AdMob이 수집한 데이터를 개인을 알아볼 수 있는 형태로 받지 않으며, 집계된 광고 보고서만 확인합니다.</p>
+
+<h2 id="services">4. {H.services}</h2>
+
+<h3>4.1 광고 (Google AdMob) — 행태정보의 수집·이용·제공 및 거부</h3>
+<p>
+  앱은 Google AdMob을 통해 배너·전면·보상형 광고를 보여 줍니다. 광고를 요청하거나 표시할 때 AdMob은 3조의 정보(광고 ID, 앱 세트 ID, IP 주소와 이를 통해 추정한 대략적 위치,
+  앱 상호작용, 진단 정보)를 수집하여 광고 제공·측정, 같은 광고의 반복 노출 제한, 부정 클릭 방지에 사용합니다.
+</p>
+<p>
+  맞춤형 광고 여부는 이용자의 기기 설정과 지역별 동의에 따릅니다. 광고 ID는 언제든 재설정하거나 삭제할 수 있습니다(8조 참고).
+  자세한 내용: <a href="https://policies.google.com/technologies/partner-sites" rel="noopener">Google이 서비스를 사용하는 사이트 또는 앱의 정보를 사용하는 방법</a>,
+  <a href="https://policies.google.com/privacy?hl=ko" rel="noopener">Google 개인정보처리방침</a>
+</p>
+
+<h3>4.2 동의 (유럽경제지역·영국·스위스)</h3>
+<p>
+  유럽경제지역(EEA), 영국, 스위스의 이용자에게는 앱 첫 실행 시 Google 사용자 메시지 플랫폼(UMP, Google 인증 동의 관리 플랫폼)의 동의 화면이 표시되며,
+  맞춤형 광고에 데이터를 사용할지 선택할 수 있습니다. 선택은 게임 설정의 <strong>개인정보 설정</strong> 버튼으로 언제든 바꿀 수 있습니다.
+</p>
+
+<h3>4.3 인앱 결제 (Google Play 결제)</h3>
+<p>
+  결제는 전적으로 Google Play가 처리하며, 카드 번호 등 결제 정보는 퍼다이스에 전달되지 않습니다. 앱은 구매한 상품 ID와 구매 상태만 받아 상품을 지급하고,
+  복원을 위해 "광고 제거" 같은 이용 권한만 기기에 저장합니다.
+</p>
+
+<h3>4.4 클라우드 저장 (Google Play 게임즈 서비스)</h3>
+<p>
+  이용자가 Google Play 게임즈에 로그인한 경우에만, 게임 진행 데이터(진행도, 아이템 수, 설정 등)를 Google Play 게임즈 저장 공간에 저장해 다른 기기에서 불러올 수 있게 합니다.
+  이 데이터는 퍼다이스로 전송되지 않습니다.
+</p>
+
+<h3>4.5 기기 내 저장</h3>
+<p>게임 진행 데이터는 기기 안의 앱 전용 저장소에 저장되며, 4.4의 클라우드 저장을 제외하면 기기 밖으로 나가지 않습니다.</p>
+
+<h2 id="purposes">5. {H.purposes}</h2>
+<ul>
+  <li><strong>광고 제공·측정 및 부정 이용 방지</strong> — AdMob 수집 정보</li>
+  <li><strong>구매한 상품의 지급·복원</strong> — 구매 정보</li>
+  <li><strong>다른 기기에서 게임 진행 이어하기</strong> — 클라우드 저장 정보</li>
+</ul>
+<p>퍼다이스는 개인정보를 판매하지 않으며, 위 목적 외의 용도로 이용하지 않습니다. 목적이 바뀌는 경우 「개인정보 보호법」 제18조에 따라 별도 동의를 받는 등 필요한 조치를 하겠습니다.</p>
+
+<h2 id="transfer">6. {H.transfer}</h2>
+<p>퍼다이스는 개인정보 처리 업무를 외부에 위탁하지 않습니다. 앱 이용 과정에서 아래와 같이 개인정보가 Google에 제공되고 국외로 이전됩니다.</p>
+<div class="table-scroll">
+  <table>
+    <tbody>
+      <tr><th scope="row">제공·이전받는 자</th><td>Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) 및 계열사<br />연락처: <a href="https://policies.google.com/privacy?hl=ko" rel="noopener">Google 개인정보처리방침</a>의 문의 채널</td></tr>
+      <tr><th scope="row">이전 국가</th><td>미국 등 Google 데이터센터 소재 국가</td></tr>
+      <tr><th scope="row">이전 항목</th><td>3조 표의 항목 (앱별로 사용하는 서비스에 해당하는 항목만)</td></tr>
+      <tr><th scope="row">이전 일시 및 방법</th><td>앱에서 광고 요청, 결제, 클라우드 동기화가 일어날 때마다 네트워크를 통해 암호화(TLS) 전송</td></tr>
+      <tr><th scope="row">이용 목적</th><td>5조의 목적 (광고 제공·측정·부정 방지, 결제 처리, 클라우드 저장)</td></tr>
+      <tr><th scope="row">보유·이용 기간</th><td>Google의 개인정보 보유 정책에 따름</td></tr>
+      <tr><th scope="row">근거</th><td>「개인정보 보호법」 제28조의8 제1항 제3호 (정보주체와의 계약 체결·이행을 위해 처리위탁·보관이 필요한 경우로서 이 방침에 공개)</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>
+  <strong>거부 방법 및 효과</strong>: 광고 ID 삭제, 맞춤형 광고 거부, 구매·클라우드 저장 미사용, 앱 사용 중단 및 삭제로 이전을 거부할 수 있습니다.
+  다만 광고를 표시하려면 최소한의 정보 전송이 필요하므로, 앱을 사용하는 동안에는 광고와 관련된 정보 전송을 완전히 막을 수 없습니다.
+</p>
+
+<h2 id="retention">7. {H.retention}</h2>
+<ul>
+  <li><strong>기기 내 데이터</strong>: 앱을 삭제하거나 앱 데이터를 지울 때까지</li>
+  <li><strong>클라우드 저장 데이터</strong>: 이용자가 Google Play 게임즈에서 삭제할 때까지</li>
+  <li><strong>광고 관련 데이터</strong>: Google의 보유 정책에 따름</li>
+  <li><strong>구매 기록</strong>: Google Play의 정책과 관련 법령에 따름</li>
+  <li><strong>이용자가 보낸 문의 이메일</strong>: 답변에 필요한 기간 동안만 보관 후 삭제</li>
+</ul>
+<p>
+  <strong>파기 절차 및 방법</strong>: 퍼다이스가 직접 보관하는 개인정보는 문의 이메일뿐이며, 보유 목적이 달성되면 지체 없이 메일함에서 영구 삭제합니다.
+  전자적 파일은 복구할 수 없는 방법으로 삭제하고, 종이 문서는 보관하지 않습니다.
+</p>
+
+<h2 id="rights">8. {H.rights}</h2>
+<ul>
+  <li><strong>광고 ID</strong>: Android 설정 → Google → 광고 (또는 설정 → 개인정보 보호 → 광고)에서 재설정·삭제</li>
+  <li><strong>맞춤형 광고</strong>: <a href="https://myadcenter.google.com/?hl=ko" rel="noopener">내 광고 센터</a>에서 관리, EEA·영국·스위스는 게임 안 개인정보 설정 버튼으로도 변경</li>
+  <li><strong>클라우드 저장 데이터</strong>: Google Play 게임즈 앱 또는 Google 계정 설정에서 해당 게임 데이터 삭제</li>
+  <li><strong>기기 내 데이터</strong>: 앱 삭제, 또는 Android 설정 → 애플리케이션에서 저장공간 삭제</li>
+  <li><strong>구매 기록</strong>: Google Play 계정의 주문 내역에서 관리 (Google 소관)</li>
+</ul>
+<p>
+  정보주체는 퍼다이스에 대해 언제든지 개인정보 열람, 정정·삭제, 처리정지 요구 및 동의 철회 등의 권리를 행사할 수 있습니다.
+  권리 행사는 <a href={mail}>{SITE.email}</a>로 이메일을 보내 하실 수 있으며, 법정대리인이나 위임을 받은 사람을 통해서도 할 수 있습니다(이 경우 위임장 제출).
+  퍼다이스는 이용자를 식별할 수 있는 정보를 보관하지 않으므로 대부분은 위의 Google 도구로 직접 처리할 수 있으나, 이메일로 요청하시면 지체 없이 안내·조치하겠습니다.
+</p>
+
+<h2 id="children">9. {H.children}</h2>
+<p>
+  퍼다이스의 앱은 만 14세 미만 아동을 대상으로 하지 않으며(Google Play Console 타겟층: 만 13세 이상), 만 14세 미만 아동의 개인정보를 알면서 수집하지 않습니다.
+  아동의 개인정보가 처리된 사실을 알게 되면 즉시 삭제 등 필요한 조치를 하겠습니다. 문의: <a href={mail}>{SITE.email}</a>
+</p>
+
+<h2 id="security">10. {H.security}</h2>
+<p>
+  퍼다이스는 서버를 운영하거나 개인정보를 직접 저장하지 않아 처리하는 개인정보를 최소화하고 있습니다. 앱의 모든 네트워크 통신은 암호화(TLS)되며,
+  개발자·광고 계정에는 퍼다이스 구성원만 접근할 수 있도록 관리합니다.
+</p>
+
+<h2 id="website">11. {H.website}</h2>
+<p>
+  이 웹사이트(furdice.com)는 쿠키, 분석 도구, 광고를 사용하지 않으며 외부 스크립트나 웹폰트를 불러오지 않습니다. 사이트는 GitHub Pages에서 호스팅되며,
+  GitHub는 보안 목적으로 방문자의 IP 주소를 기록할 수 있습니다(<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub 개인정보 처리방침</a>).
+</p>
+
+<h2 id="changes">12. {H.changes}</h2>
+<p>이 방침이 바뀌면 이 페이지와 상단의 시행일을 갱신하고, 중요한 변경은 앱 또는 이 웹사이트에서 따로 알려 드립니다.</p>
+
+<h2 id="contact">13. {H.contact}</h2>
+<p>퍼다이스는 개인정보 처리에 관한 업무를 총괄하고 관련 불만 처리 및 피해 구제를 위해 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+<div class="callout">
+  <strong>개인정보 보호책임자</strong><br />
+  성명: {SITE.privacyOfficer}<br />
+  연락처: <a href={mail}>{SITE.email}</a>
+</div>
+<p>정보주체는 개인정보 침해로 인한 구제를 받기 위해 아래 기관에 분쟁 해결이나 상담을 신청할 수 있습니다.</p>
+<ul>
+  <li>개인정보분쟁조정위원회: (국번없이) 1833-6972 (<a href="https://www.kopico.go.kr" rel="noopener">www.kopico.go.kr</a>)</li>
+  <li>개인정보침해신고센터: (국번없이) 118 (<a href="https://privacy.kisa.or.kr" rel="noopener">privacy.kisa.or.kr</a>)</li>
+  <li>대검찰청: (국번없이) 1301 (<a href="https://www.spo.go.kr" rel="noopener">www.spo.go.kr</a>)</li>
+  <li>경찰청: (국번없이) 182 (<a href="https://ecrm.police.go.kr" rel="noopener">ecrm.police.go.kr</a>)</li>
+</ul>

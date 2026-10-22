@@ -1,0 +1,67 @@
+import type { Lang } from '../data/site';
+
+/** 방침 섹션 id(앵커)와 언어별 제목. 목차와 본문이 같은 값을 쓴다. */
+export const SECTION_IDS = [
+  'who',
+  'summary',
+  'data',
+  'services',
+  'purposes',
+  'transfer',
+  'retention',
+  'rights',
+  'children',
+  'security',
+  'website',
+  'changes',
+  'contact',
+] as const;
+export type SectionId = (typeof SECTION_IDS)[number];
+
+export const HEADINGS: Record<Lang, Record<SectionId, string>> = {
+  en: {
+    who: 'Who we are and which apps this covers',
+    summary: 'Summary',
+    data: 'Data collected by our apps',
+    services: 'How each service uses data',
+    purposes: 'Purposes and legal bases',
+    transfer: 'Sharing and international transfer',
+    retention: 'Retention and deletion',
+    rights: 'Your choices and rights',
+    children: 'Children',
+    security: 'Security',
+    website: 'This website',
+    changes: 'Changes to this policy',
+    contact: 'Contact',
+  },
+  ko: {
+    who: '개인정보처리자와 적용 앱',
+    summary: '요약',
+    data: '처리하는 개인정보 항목',
+    services: '서비스별 처리 내용',
+    purposes: '처리 목적',
+    transfer: '개인정보의 제3자 제공 및 국외 이전',
+    retention: '보유 기간 및 파기',
+    rights: '정보주체의 권리와 행사 방법',
+    children: '만 14세 미만 아동',
+    security: '안전성 확보 조치',
+    website: '이 웹사이트',
+    changes: '개인정보처리방침의 변경',
+    contact: '개인정보 보호책임자 및 권익침해 구제',
+  },
+  ja: {
+    who: '事業者と対象アプリ',
+    summary: '概要',
+    data: 'アプリが収集するデータ',
+    services: 'サービスごとのデータの取り扱い',
+    purposes: '利用目的',
+    transfer: '第三者提供および外国への移転',
+    retention: '保存期間と削除',
+    rights: 'お客様の選択と権利',
+    children: '子どもについて',
+    security: '安全管理措置',
+    website: '本ウェブサイト',
+    changes: '本ポリシーの変更',
+    contact: 'お問い合わせ',
+  },
+};

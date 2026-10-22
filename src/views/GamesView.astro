@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import GameCard from '../components/GameCard.astro';
+import { GAMES } from '../data/games';
+import { SITE, localePath, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: GAMES.map((g, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(localePath(lang, `/games/${g.slug}/`), SITE.url).href,
+    name: g.name[lang],
+  })),
+};
+---
+
+<Base lang={lang} path="/games/" title={`${t(lang, 'games.title')} — FurDice`} description={t(lang, 'games.description')} jsonLd={jsonLd}>
+  <section class="hero">
+    <div class="wrap">
+      <h1>{t(lang, 'games.title')}</h1>
+      <p class="lead">{t(lang, 'games.lead')}</p>
+    </div>
+  </section>
+  <section class="wrap">
+    <ul class="game-grid">
+      {GAMES.map((game) => <GameCard game={game} lang={lang} />)}
+    </ul>
+  </section>
+</Base>
