@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import type { Game } from '../data/games';
+import { localePath, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  game: Game;
+  lang: Lang;
+}
+
+const { game, lang } = Astro.props;
+const href = localePath(lang, `/games/${game.slug}/`);
+---
+
+<li class="game-card">
+  <Image src={game.image} alt="" widths={[480, 800]} sizes="(max-width: 700px) 100vw, 380px" loading="lazy" />
+  <div class="game-card-body">
+    <p class="meta">
+      <span class="chip">{game.genre[lang]}</span>
+      {game.platforms.map((p) => <span class="chip">{t(lang, `platform.${p}`)}</span>)}
+    </p>
+    <h3><a href={href}>{game.name[lang]}</a></h3>
+    <p>{game.tagline[lang]}</p>
+  </div>
+</li>

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+_legacy/
+.DS_Store
+
+# 내부 작업 문서 — 공개 저장소에 올리지 않는다
+HANDOFF.md
+01_privacy_policy.md
+progress.md
+.claude/

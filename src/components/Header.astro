@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import icon from '../assets/icon.png';
+import { LANGS, LANG_LABEL, SITE, localePath, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const nav = [
+  { href: '/games/', label: t(lang, 'nav.games') },
+  { href: '/privacy/', label: t(lang, 'nav.privacy') },
+];
+const isCurrent = (href: string) => path.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={localePath(lang, '/')} aria-label={`${SITE.name} — ${t(lang, 'nav.home')}`}>
+      <Image src={icon} alt="" width={36} height={36} class="brand-mark" />
+      <span class="brand-name">FurDice</span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      {nav.map((item) => (
+        <a href={localePath(lang, item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    <nav class="lang-nav" aria-label={t(lang, 'lang.label')}>
+      {LANGS.map((l) => (
+        <a href={localePath(l, path)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>
+          {LANG_LABEL[l]}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

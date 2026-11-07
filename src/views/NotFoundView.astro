@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { LANGS, LANG_LABEL, localePath } from '../data/site';
+import { t } from '../data/ui';
+
+// 404는 언어별로 따로 만들 수 없어(GitHub Pages는 404.html 하나) 세 언어를 함께 보여 준다.
+---
+
+<Base lang="en" path="/" title="404 — FurDice" description={t('en', 'notfound.body')} noindex>
+  <section class="hero">
+    <div class="wrap">
+      <h1>404</h1>
+      {LANGS.map((l) => (
+        <p lang={l}>
+          <strong>{t(l, 'notfound.title')}</strong> — {t(l, 'notfound.body')}{' '}
+          <a href={localePath(l, '/')}>{t(l, 'notfound.home')} ({LANG_LABEL[l]})</a>
+        </p>
+      ))}
+    </div>
+  </section>
+</Base>

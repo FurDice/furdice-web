@@ -1,0 +1,28 @@
+---
+import { SITE, localePath, type Lang } from '../data/site';
+import { t } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-name">FurDice</p>
+      <!-- 사업자 정보(상호·대표자·사업자등록번호)는 progress.md에서 공개 범위를 정한 뒤 추가 -->
+      <p>
+        {t(lang, 'footer.contact')}: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href={localePath(lang, '/games/')}>{t(lang, 'nav.games')}</a>
+      <a href={localePath(lang, '/privacy/')}>{t(lang, 'nav.privacy')}</a>
+    </nav>
+    <p class="footer-copy">© {year} FurDice. {t(lang, 'footer.rights')}</p>
+  </div>
+</footer>
