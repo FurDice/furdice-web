@@ -6,7 +6,7 @@ const DIST = 'dist';
 const errors = [];
 
 const REQUIRED = {
-  'app-ads.txt': 'google.com, pub-8080737075353951, DIRECT, f08c47fec0942fa0',
+  'app-ads.txt': 'google.com, pub-8425533448336338, DIRECT, f08c47fec0942fa0',
   CNAME: 'furdice.com',
   'robots.txt': 'Sitemap: https://furdice.com/sitemap.xml',
   'sitemap.xml': '<urlset',
